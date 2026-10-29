@@ -1,0 +1,16 @@
+{
+  "name": "icteam",
+  "owner": {
+    "name": "konkuk-icteam-student"
+  },
+  "metadata": {
+    "description": "건국대학교 정보운영팀 프로젝트 파이프라인 스킬 모음"
+  },
+  "plugins": [
+    {
+      "name": "pipeline",
+      "source": "./plugins/pipeline",
+      "description": "정보운영팀 프로젝트 파이프라인: 기획 → 화면 → API 명세 → 서버 → 연동 → 배포"
+    }
+  ]
+}
