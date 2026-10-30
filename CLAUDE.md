@@ -14,4 +14,4 @@
 - `spec.md`의 frontmatter `stage`는 `plan` → `design` → `api` → `server` → `connect` → `deploy` → `done` 순서로만 바뀐다. 스킬이 단계를 마치면 갱신한다
 - 스킬 수정은 `plugins/pipeline/skills/<스킬>/SKILL.md`. 스킬을 추가·변경하면 `plugin.json`의 `version`을 올리고 `README.md`의 진행 순서 표를 고친다
 - 커밋 메시지·브랜치명은 프론트 레포의 `../konkuk-icteam-fe/docs/git-conventions.md`를 따른다
-- **머지는 개발자만 한다.** Claude는 PR 머지·승인·자동 머지 설정을 하지 않는다. 브랜치 푸시(`develop`·`main` 포함)는 할 수 있다. `plugins/pipeline/hooks/block-merge.mjs`가 막는다
+- **이 기획 레포는 머지 제한이 없다.** 프론트·서버 레포에서는 Claude가 PR 머지·승인·자동 머지를 하지 않는다(개발자만 머지). `plugins/pipeline/hooks/block-merge.mjs`가 막고, 이 레포에서는 통과시킨다
