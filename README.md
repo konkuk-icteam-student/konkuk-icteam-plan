@@ -79,4 +79,5 @@ plugins/pipeline/references/      여러 스킬이 같이 쓰는 규칙 (질문�
 plugins/pipeline/hooks/           머지 차단 훅
 docs/guide.md                     사용 가이드 (기획 담당용)
 projects/<프로젝트>/              프로젝트마다 폴더 하나 (영문 kebab-case, 예: commute)
+projects/example/                 스킬·파이프라인 확인용 예시 프로젝트 (실제 서비스 아님)
 ```
