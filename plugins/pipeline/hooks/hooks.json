@@ -1,0 +1,16 @@
+{
+  "description": "머지는 개발자만: Claude의 PR 머지·승인·자동 머지·develop/main 직접 푸시를 막는다",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash|mcp__ccd_pr__set_auto_merge",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/block-merge.mjs\""
+          }
+        ]
+      }
+    ]
+  }
+}
