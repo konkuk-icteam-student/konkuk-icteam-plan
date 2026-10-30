@@ -36,21 +36,42 @@ GitHub에 올리기 전이라면 로컬 폴더로도 됩니다: `/plugin marketp
 
 ## 진행 순서
 
-| 단계 | 스킬                      | 누가      | 어디서 열고 하나     | 결과                                   |
-| ---- | ------------------------- | --------- | -------------------- | -------------------------------------- |
-| 1    | `/pipeline:plan`          | 기획 담당 | `konkuk-icteam-plan` | `projects/<프로젝트>/spec.md`          |
-| 2    | `/pipeline:design-screen` | 기획 담당 | `konkuk-icteam-fe`   | 화면 + 목업 데이터, 스크린샷           |
-| 3    | `/pipeline:api-spec`      | 기획·개발 | `konkuk-icteam-fe`   | `projects/<프로젝트>/api.md` (준비 중) |
-| 4    | `/pipeline:build-server`  | 개발      | `icteam-server`      | Spring API (준비 중)                   |
-| 5    | `/pipeline:connect-api`   | 개발      | `konkuk-icteam-fe`   | 목업 → 실제 서버 요청 (준비 중)        |
-| 6    | `/pipeline:deploy`        | 개발      | 각 레포              | 배포 (준비 중)                         |
+처음이거나 다음에 뭘 할지 모르겠으면 **`/pipeline:kickoff`** 만 치면 됩니다. 지금 단계를 보여주고 다음 스킬을 시작해 줍니다.
+
+### 기획 (기획 담당, `konkuk-icteam-plan`에서)
+
+| 단계          | 스킬                  | 하는 일                                                 | 결과                                  |
+| ------------- | --------------------- | ------------------------------------------------------- | ------------------------------------- |
+| ① 기획서      | `/pipeline:plan`      | 질문에 답하면 기획서가 만들어져요                       | `projects/<프로젝트>/spec.md`         |
+| ② 현장 인터뷰 | `/pipeline:interview` | 관리자·근로학생에게 물어볼 질문지와 답 정리 (필요할 때) | `projects/<프로젝트>/interviews/*.md` |
+| ③ 범위        | `/pipeline:scope`     | 이번 학기에 만들 것과 미룰 것 나누기                    | `spec.md`의 `범위`                    |
+| ④ 기능 명세   | `/pipeline:stories`   | 기능마다 "이게 되면 완성" 정하기, GitHub 이슈 등록      | `projects/<프로젝트>/stories.md`      |
+| ⑤ 빈틈 점검   | `/pipeline:red-team`  | 놓친 예외 상황을 찾아 메우기                            | `projects/<프로젝트>/red-team.md`     |
+
+모든 기획 스킬은 같은 질문 규칙([`plugins/pipeline/references/asking.md`](plugins/pipeline/references/asking.md))을 따릅니다. 왜 묻는지 먼저 말하고, 선택지마다 고르면 어떻게 되는지 알려주고, "잘 모르겠어요"를 언제나 고를 수 있어요.
+
+### 개발
+
+| 단계     | 스킬                      | 누가      | 어디서             | 결과                                   |
+| -------- | ------------------------- | --------- | ------------------ | -------------------------------------- |
+| 화면     | `/pipeline:design-screen` | 기획·개발 | `konkuk-icteam-fe` | 화면 + 목업 데이터, 스크린샷           |
+| API 명세 | `/pipeline:api-spec`      | 기획·개발 | `konkuk-icteam-fe` | `projects/<프로젝트>/api.md` (준비 중) |
+| 서버     | `/pipeline:build-server`  | 개발      | `icteam-server`    | Spring API (준비 중)                   |
+| 연동     | `/pipeline:connect-api`   | 개발      | `konkuk-icteam-fe` | 목업 → 실제 서버 요청 (준비 중)        |
+| 배포     | `/pipeline:deploy`        | 개발      | 각 레포            | 배포 (준비 중)                         |
 
 각 프로젝트가 어디까지 왔는지는 `spec.md` 맨 위의 `stage` 값과 맨 아래 **진행 상황** 체크리스트에 적힙니다.
+
+## 머지는 개발자만
+
+Claude는 커밋·푸시하고 PR을 만드는 데까지만 합니다. **PR 머지·승인·자동 머지는 막혀 있습니다.** 브랜치 푸시는 `develop`·`main`도 할 수 있어요. 플러그인에 들어 있는 훅([`plugins/pipeline/hooks/`](plugins/pipeline/hooks/))이 이런 명령을 실행 전에 막아요. 머지는 개발자가 리뷰한 뒤 GitHub에서 직접 합니다.
 
 ## 폴더
 
 ```
 .claude-plugin/marketplace.json   플러그인 목록
 plugins/pipeline/skills/          스킬 (단계마다 폴더 하나)
+plugins/pipeline/references/      여러 스킬이 같이 쓰는 규칙 (질문하는 법)
+plugins/pipeline/hooks/           머지 차단 훅
 projects/<프로젝트>/              프로젝트마다 폴더 하나 (영문 kebab-case, 예: commute)
 ```
