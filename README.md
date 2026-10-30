@@ -38,6 +38,8 @@ GitHub에 올리기 전이라면 로컬 폴더로도 됩니다: `/plugin marketp
 
 처음이거나 다음에 뭘 할지 모르겠으면 **`/pipeline:kickoff`** 만 치면 됩니다. 지금 단계를 보여주고 다음 스킬을 시작해 줍니다.
 
+**단계마다 무엇을 묻고 무엇이 남는지, 대화하는 법, 자주 묻는 질문은 [사용 가이드](docs/guide.md)에 있어요.** 처음이라면 가이드부터 읽어 보세요.
+
 ### 기획 (기획 담당, `konkuk-icteam-plan`에서)
 
 | 단계          | 스킬                  | 하는 일                                                 | 결과                                  |
@@ -75,5 +77,6 @@ GitHub에 올리기 전이라면 로컬 폴더로도 됩니다: `/plugin marketp
 plugins/pipeline/skills/          스킬 (단계마다 폴더 하나)
 plugins/pipeline/references/      여러 스킬이 같이 쓰는 규칙 (질문하는 법)
 plugins/pipeline/hooks/           머지 차단 훅
+docs/guide.md                     사용 가이드 (기획 담당용)
 projects/<프로젝트>/              프로젝트마다 폴더 하나 (영문 kebab-case, 예: commute)
 ```
